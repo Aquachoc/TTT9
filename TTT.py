@@ -7,6 +7,8 @@ from tkinter import *
 import numpy as np
 from random import random
 import math
+from copy import deepcopy
+FLAG=[]
 x=0
 y=0
 mut_range=6
@@ -55,7 +57,7 @@ def isWon(grid) : #pour une grille array
     k=0
     for i in range(3):
         for j in range(3):
-            k+=(grid[i][j]>0)
+            k+=(grid[i][j]!=0)
     if k==9:
         return -1
     return 0
@@ -159,7 +161,15 @@ def findZ(grid): #find 0 for 3*3
             if not grid[i][j]:
                 L.append([i,j])
     return L
-        
+
+def vide_check(grid):
+    for i in grid:
+        for j in i:
+            for k in j:
+                for l in k:
+                    if l:
+                        return False
+    return True
 def possible(grid, last, mgrid=[]):
     if last==[3,3]:
         a=np.where(grid==0)
@@ -170,10 +180,14 @@ def possible(grid, last, mgrid=[]):
         n=len(a[0])
         b=zip(last[0]*np.ones(n,dtype=int),last[1]*np.ones(n,dtype=int),a[0],a[1])
         b= list(b)
-    if len(mgrid)>0:    
+    if len(mgrid)>0: 
         k=0
+        flag=vide_check(grid)
         while k<len(b):
-            if mgrid[b[k][0]][b[k][1]]:
+            if flag and not([b[k][0],b[k][1]] in [[0,0],[0,1],[1,1]]):
+                del(b[k])
+                
+            elif mgrid[b[k][0]][b[k][1]]:
                 del(b[k])
             else:
                 k+=1
@@ -198,7 +212,7 @@ class Game:
         self.p2.tmpId=2
         self.p1.gAct=self.p2.gAct=self
         self.turn=-1
-        self.mHist=np.zeros((3,3),dtype=int)
+        self.mHist=np.zeros((3,3),dtype=int)-1
         self.auto_play()
     def move(self,m):
         i,j,k,l=m
@@ -220,23 +234,27 @@ class Game:
                     self.last=[3,3]
             else :
                 print("Coup", m, "invalide`\n")
+
     def hist(self):
         gHist(self.hist)
         
     def auto_play(self):
         while self.winner==0:
             self.turn+=1
+#            print(self.turn)
             if self.actual==1:
                 m=self.p1.move()
                 
             else:
                 m=self.p2.move()
+            #print(m)
             if m!=None:
                 self.move(m)
                 self.hist.append(m)
                 self.actual=1+self.actual%2
             else:
-                self.winner=-1
+                o=isWon(self.mgrid)
+                self.winner=(-1 if o==0 else o)
                 
         if self.winner==1:
             self.p1.score+=1
@@ -248,9 +266,42 @@ class Game:
             self.p1.score+=0.5
             self.p2.score+=0.5
 
+def max_play(grid, mgrid, last, pId, pond, depth):
+    if depth==0:
+        return 0
+    poss=possible(grid, last, mgrid)
+    ltmp=[]
+    tmp=[]
+    mtmp=[]
+    res=0
+    punaise=0
+    best=-math.inf
+    for m in poss:
+        i,j,k,l=m 
+        mtmp=np.array(mgrid)
+        ltmp=last
+        if not grid[i][j][k][l]:
+            if (last==[i,j] or last==[3,3]): # and self.grid[i][j][k][l]==0
+                tmp=applyM(grid,m,pId)
+                ltmp=[k,l]
+                mtmp[i][j]=isWon(tmp[i][j])
+                if isWon(mtmp)==pId:
+                    return math.inf
+                punaise = eurist(grid, mgrid, pond, pId,m)
+                if punaise +1 == punaise:
+                    return punaise
+                if mtmp[k][l]:
+                    ltmp=[3,3]
+                    if depth==1:
+                        return punaise
+                res=-max_play(tmp, mtmp, ltmp, 1+pId%2, pond, depth-1) + eurist(grid, mgrid, pond, pId,m)
+                if best<res:
+                    best=res
+    return best
+
 class Player:
     name=0
-    def __init__(self,pond=[3,2,1,1,1,1,1,1,1,1,1, math.inf],typ="normal"):
+    def __init__(self,pond=[3,2,1,1,1,1,1,1,1,1,1, math.inf],typ="euri"):
         self.score=0
         self.name=Player.name
         Player.name+=1
@@ -284,11 +335,55 @@ class Player:
                 i=s
         return M
     
+    def move3(self, depth):
+        global FLAG
+        grid=np.array(self.gAct.grid)
+        mgrid=np.array(self.gAct.mgrid)
+        last=self.gAct.last
+        ltmp=[]
+        poss=possible(self.gAct.grid, self.gAct.last, self.gAct.mgrid)
+        #print(len(poss))
+        best=-math.inf
+        tmp=[]
+        mtmp=[]
+        res=0
+        if len(poss)==0:
+            FLAG.append(deepcopy(self))
+            print("poss vide")
+            return None
+        move=poss[0]
+        for m in poss:
+            i,j,k,l=m
+            mtmp=mgrid
+            ltmp=last
+            if not grid[i][j][k][l]:
+                if (last==[i,j] or last==[3,3]): # and self.grid[i][j][k][l]==0
+                    tmp=applyM(grid,m,self.tmpId)
+                    ltmp=[k,l]
+                    mtmp[i][j]=isWon(tmp[i][j])
+                    if isWon(mtmp)==self.tmpId:
+                        return m
+                    if mtmp[k][l]:
+                        ltmp=[3,3]
+                    o=eurist(grid, mgrid,self.pond,self.tmpId,m)
+                    if o==math.inf:
+                        return m
+                    res=-max_play(tmp, mtmp, ltmp, 1+self.tmpId%2, self.pond, depth-1)+o
+                    if best<res:
+                        move=m
+                        best=res
+                else :
+                    print("Coup", m, "invalide`\n")
+        return move
+    
     
     def move(self):
         if self.typ=="dummy":
             return self.move1(self.gAct.grid, self.gAct.last, self.gAct.mgrid)
-        return self.move2()
+        if self.typ=="euri":
+            return self.move2()
+        return self.move3(3)
+
     
     def indicateurs(self,m):
         g=self.gAct
@@ -314,7 +409,7 @@ class Player:
 def conti(event):
     n=len(event.widget.g.hist)
     c=event.widget.count
-    if c%2==1 and c<=n:
+    if c%2==1 and 0<c<=n:
         h=event.widget.g.hist[c-1]
         a=cross(event.widget,h[0],h[1],h[2],h[3])
         event.widget.tmp.append(a)
@@ -333,7 +428,7 @@ def conti(event):
         event.widget.count+=1
     return 1
     
-        
+       
 #    def eva(grid,move)
 def gHist(game):
         root = Tk()
@@ -502,11 +597,52 @@ def recap_pond(players):
     for i in players:
         print(i.pond)
 
+def applyM(grid,move,playerId):
+    a=deepcopy(grid)
+    if len(move)>2:
+        a[move[0]][move[1]][move[2]][move[3]]=playerId
+    else :
+        a[move[0]][move[1]]=playerId
+    return a
+
+def indicateurs(grid,mgrid,playerId,m):
+        k=m[0:2]
+        m=m[2:]
+        tmp=np.array(grid)
+        tmp[k[0]][k[1]][m[0]][m[1]]=playerId
+        won=isWon(tmp[k[0]][k[1]])
+        adv_winnable=winnable(tmp[k[0]][k[1]], 1+playerId%2)
+        mGrid=winGrid(tmp)
+        capture=(mGrid[k[0]][k[1]]==playerId)*1
+        victory=isWon(mGrid)
+        return[1*center_flag(m), 1*corner_flag(m), 1*border_flag(m),  nbPions(grid[m[0]][m[1]],playerId,m), nbPions(grid[m[0]][m[1]], 1+(playerId%2), m), 1*(mgrid[m[0]][m[1]]!=0), 1*winnable(grid[m[0]][m[1]]), int(winnable(grid[m[0]][m[1]], 1+playerId%2)),won, int(adv_winnable), capture, victory]
+    
+def eurist(grid,mgrid,pond,playerId,m):
+        flags=np.array(indicateurs(grid,mgrid,playerId,m))
+        if not flags[-1]:
+            score=sum(flags[:-1]*pond[:-1])
+        else:
+            score=sum(flags*pond)
+        return score    
 
 
-a=Player()
-b=Player()
-main=Game(a,b)
-main.last=[0,1]
+
+a=Player(pond = [ -0.99403255, -28.00149821,  37.97525959,  -6.9197625 ,
+       -16.63066428,  -8.17460181,  -2.63418722, -29.41853052,
+        43.87076219,   4.6322527 ,   6.23818578,          math.inf], typ="mini")
+b=Player(pond=a.pond, typ="euri")
+d=Player(pond=a.pond, typ="euri")
+f=Player(typ="dummy")
+w=0
+for _ in range(100):
+    main=Game(f,a)
+    if main.winner==2:
+        w+=1
+    print(_)
+c=Player()
+main=Game(c,b)
+#b=Player()
+#main=Game(a,b)
+#main.last=[0,1]
 
 

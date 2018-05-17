@@ -199,6 +199,7 @@ class Game:
         self.p1.gAct=self.p2.gAct=self
         self.turn=-1
         self.mHist=np.zeros((3,3),dtype=int)
+        self.auto_play()
     def move(self,m):
         i,j,k,l=m
         vict=0
@@ -219,7 +220,9 @@ class Game:
                     self.last=[3,3]
             else :
                 print("Coup", m, "invalide`\n")
-                
+    def hist(self):
+        gHist(self.hist)
+        
     def auto_play(self):
         while self.winner==0:
             self.turn+=1
@@ -237,8 +240,10 @@ class Game:
                 
         if self.winner==1:
             self.p1.score+=1
+            self.p1.wins+=1
         elif self.winner==2:
             self.p2.score+=1
+            self.p2.wins+=1
         else:
             self.p1.score+=0.5
             self.p2.score+=0.5
@@ -249,10 +254,12 @@ class Player:
         self.score=0
         self.name=Player.name
         Player.name+=1
+        self.wins=0
         self.pond=np.array(pond)
         self.tmpId=0
         self.gAct=None
         self.typ=typ
+        self.survival=0
     def move1(self,grid,last,mgrid):
         poss=possible(grid,last,mgrid)
         n=len(poss)
@@ -338,7 +345,7 @@ def gHist(game):
         w.g=game
         w.root=root
         w.bind("<Button-1>", conti)
-        w.bind("<Button-3>", prev)
+       # w.bind("<Button-3>", prev)
         for i in range(1,9):
             if i%3:
                 w.create_line(0,i*100,900,i*100)
@@ -349,18 +356,18 @@ def gHist(game):
         root.mainloop()  
         print(len(w.tmp))
             
-def prev(event):
-    n=len(event.widget.g.hist)
-    c=event.widget.count
-    if n>0:
-        event.widget.count-=1
-        if event.widget.mTmp[-1]!=None:
-            event.widget.delete(event.widget.mTmp[-1])
-            del(event.widget.mTmp[-1])
-        event.widget.delete(event.widget.tmp[-1])
-        del(event.widget.tmp[-1])
-    event.widget.root.update()
-    return 1
+#def prev(event):
+#    n=len(event.widget.g.hist)
+#    c=event.widget.count
+#    if n>0:
+#        event.widget.count-=1
+#        if event.widget.mTmp[-1]!=None:
+#            event.widget.delete(event.widget.mTmp[-1])
+#            del(event.widget.mTmp[-1])
+#        event.widget.delete(event.widget.tmp[-1])
+#        del(event.widget.tmp[-1])
+#    event.widget.root.update()
+#    return 1
 
 def create_batch(n):
     L=[]
@@ -375,6 +382,7 @@ def score_ext(player):
 def reset_scores(players):
     for i in players:
         i.score=0
+        i.wins=0
 
 def recap(players):
     n=len(players)
@@ -388,8 +396,7 @@ def tournament(players,typ='f'):
         c=0
         for i in range(n):
             for j in range(i):
-                main=Game(players[i],players[j])
-                main.auto_play()
+                Game(players[i],players[j])
                 del(main)
                 c+=1
                 print('{0:4f}'.format(c/tot))
@@ -449,26 +456,29 @@ def mutate(players):
     k=n//2
     podium(players)
     reset_scores(players)
-    players[:k]=create_batch(k)
+    p=[]
+    m=[]
     for i in range(k):
-        players[i].pond=players[-i].pond
-        mutation(players[i])
+        p=players[-i-1].pond
+        m=mutation(p)
+        players[i]=Player(pond=p+m)
+        #players[-i].survival+=1
 
 
-def mutation(player):
-    n=len(player.pond)-1
+def mutation(pond):
+    n=len(pond)
     a=np.array([mut_range*random()-0.5*mut_range for _ in range(n)])
-    player.pond[:-1]+=a
+    return a
 
-def generation(n=30,N=[]):
+def generation(n=30,N=[],nb=100):
     if len(N)==0:
         N=create_batch(n)
         randomize(N)
-    dummy_tournament(N)
+    dummy_tournament(N,nb)
     mutate(N)
     return N
 
-def dummy_tournament(players,n=10):
+def dummy_tournament(players,n=60):
     b=Player(typ="dummy")
     j=0
     l=0
@@ -487,9 +497,16 @@ def dummy_tournament(players,n=10):
             if main.winner==i.tmpId:
                 w+=1
     return w
-    
-    
+
+def recap_pond(players):
+    for i in players:
+        print(i.pond)
+
+
+
 a=Player()
 b=Player()
 main=Game(a,b)
 main.last=[0,1]
+
+
