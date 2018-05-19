@@ -6,8 +6,10 @@ Created on Tue Mar 27 15:31:16 2018
 from tkinter import *
 import numpy as np
 from random import random
+import time
 import math
 from copy import deepcopy
+MOVE=[-1,-1,-1,-1]
 FLAG=[]
 x=0
 y=0
@@ -194,8 +196,15 @@ def possible(grid, last, mgrid=[]):
     return b
         
         
-        
-
+def pix_to_case(x,y):
+    print(x//300,y//300,(x//100)%3,(y//100)%3)
+    return(x//300,y//300,(x//100)%3,(y//100)%3)   
+def human_move(event):
+    global MOVE
+    y,x = event.x, event.y
+    MOVE=pix_to_case(x,y)
+    print(MOVE)
+    
 class Game:
     def __init__(self,p1,p2,IA=0):
         self.p1=p1
@@ -213,7 +222,12 @@ class Game:
         self.p1.gAct=self.p2.gAct=self
         self.turn=-1
         self.mHist=np.zeros((3,3),dtype=int)-1
-        self.auto_play()
+        if self.p1.IA*self.p2.IA: self.auto_play()
+        elif self.p1.IA:
+            self.versus(self.p2, self.p1)
+        else: self.versus(self.p1, self.p2)
+        
+        
     def move(self,m):
         i,j,k,l=m
         vict=0
@@ -234,10 +248,86 @@ class Game:
                     self.last=[3,3]
             else :
                 print("Coup", m, "invalide`\n")
-
+    def get_human_move(self,w,p):
+        global MOVE
+        flag=False
+        test=True
+        poss = possible(self.grid, self.last, self.mgrid)
+        while not flag:
+            # print(w.cache)
+            time.sleep(0.2)
+            w.root.update()
+            m=MOVE
+            print(m)
+            MOVE=[-1,-1,-1,-1]
+            print(poss)
+            print(m)
+            print(m in poss)
+            if m in poss:
+                flag=True
+        return m
+    
+        
     def hist(self):
         gHist(self.hist)
-        
+    def versus(self,p,bot):
+        global MOVE
+        MOVE=[-1,-1,-1,-1]
+        root=Tk()
+        w = Canvas(root, width=900, height=900)
+        w.pack()
+        w.bind("<Button-1>", human_move)
+        w.bind("<Return>", kill_tk)
+        w.player=p
+        w.cache=[-1,-1,-1,-1]
+        w.root=root
+        for i in range(1,9):
+            if i%3:
+                w.create_line(0,i*100,900,i*100)
+                w.create_line(i*100,0,i*100,900)
+            else:
+                w.create_line(0,i*100,900,i*100, fill = "red", width=5)
+                w.create_line(i*100,0,i*100,900, fill = "red", width=5)
+        root.update()
+        while self.winner==0:
+            self.turn+=1
+            time.sleep(0.5)
+            if self.actual==p.tmpId:
+                m=self.get_human_move(w,p)
+            else:
+                m=bot.move()
+            
+            if m!=None:
+                self.move(m)
+                self.hist.append(m)
+                
+                if self.actual==1:
+                    cross(w, m[0],m[1],m[2],m[3])
+                    if self.mHist[m[0]][m[1]]==self.turn:
+                        bigCross(w,m[0],m[1])
+                else:
+                    circle(w, m[0],m[1],m[2],m[3])
+                    if self.mHist[m[0]][m[1]]==self.turn:
+                        bigCircle(w,m[0],m[1])
+
+                self.actual=1+self.actual%2
+                w.update()
+           
+            else:
+                o=isWon(self.mgrid)
+                self.winner=(-1 if o==0 else o)
+        w.root.destroy()        
+        if self.winner==1:
+            self.p1.score+=1
+            self.p1.wins+=1
+        elif self.winner==2:
+            self.p2.score+=1
+            self.p2.wins+=1
+        else:
+            self.p1.score+=0.5
+            self.p2.score+=0.5
+                
+                
     def auto_play(self):
         while self.winner==0:
             self.turn+=1
@@ -301,8 +391,9 @@ def max_play(grid, mgrid, last, pId, pond, depth):
 
 class Player:
     name=0
-    def __init__(self,pond=[3,2,1,1,1,1,1,1,1,1,1, math.inf],typ="euri"):
+    def __init__(self,pond=[3,2,1,1,1,1,1,1,1,1,1, math.inf],typ="euri",IA=1):
         self.score=0
+        self.IA=IA
         self.name=Player.name
         Player.name+=1
         self.wins=0
@@ -378,11 +469,12 @@ class Player:
     
     
     def move(self):
+        
         if self.typ=="dummy":
             return self.move1(self.gAct.grid, self.gAct.last, self.gAct.mgrid)
         if self.typ=="euri":
             return self.move2()
-        return self.move3(3)
+        return self.move3(4)
 
     
     def indicateurs(self,m):
@@ -496,7 +588,10 @@ def tournament(players,typ='f'):
                 c+=1
                 print('{0:4f}'.format(c/tot))
             
-            
+def kill_tk(event):
+    print("killed")
+    event.widget.root.destroy()
+               
 def podium(players):
     players.sort(key=score_ext)
 
@@ -630,17 +725,19 @@ def eurist(grid,mgrid,pond,playerId,m):
 a=Player(pond = [ -0.99403255, -28.00149821,  37.97525959,  -6.9197625 ,
        -16.63066428,  -8.17460181,  -2.63418722, -29.41853052,
         43.87076219,   4.6322527 ,   6.23818578,          math.inf], typ="mini")
-b=Player(pond=a.pond, typ="euri")
-d=Player(pond=a.pond, typ="euri")
-f=Player(typ="dummy")
-w=0
-for _ in range(100):
-    main=Game(f,a)
-    if main.winner==2:
-        w+=1
-    print(_)
-c=Player()
-main=Game(c,b)
+b=Player(IA=0)
+main=Game(a,b)
+#b=Player(pond=a.pond, typ="euri")
+#d=Player(pond=a.pond, typ="euri")
+#f=Player(typ="dummy")
+#w=0
+#for _ in range(200):
+#    main=Game(f,a)
+#    if main.winner==2:
+#        w+=1
+#    print(_)
+#c=Player()
+#main=Game(c,b)
 #b=Player()
 #main=Game(a,b)
 #main.last=[0,1]
