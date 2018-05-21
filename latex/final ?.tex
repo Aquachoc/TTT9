@@ -86,6 +86,7 @@ inputencoding=utf8,
 \par Ce projet nous a permis de mieux comprendre le monde des intelligences artificielles, en en explorant différentes formes (algorithme génétique, algorithme minimax...). 
 Il nous également permis d'apprendre à réaliser une interface graphique, en utilisant le package \textit{tkinter} de python. \\
 \par Enfin, le fait de réussir à produire une version numérique du jeu, avec une interface graphique permettant à un joueur humain de jouer contre une intelligence artificielle, nous a donné la satisfaction d'avoir réellement "créé" quelque chose grâce à la programmation. 
+\par Le projet a été organisé grâce à GitHub\footnote{\url{https://github.com/Aquachoc/TTT9}} qui a permis un partage rapide et efficace des documents lors des tests.
 \paragraph{}
 
 
@@ -323,7 +324,9 @@ class Player:
 \end{lstlisting}
 \end{minipage}
 \par Les méthodes sont pour beaucoup passées sous silence ici.
-\par La partie est une instance de Game qui a pour attribut les deux joueurs. C'est également elle qui détient l'état du jeu au sens large, et l'historique des coups. Elle attribue à sa création une ID temporaire qui sert à distinguer les deux instances de joueurs de manière simple dans l'instance de chaque joueur. Elle enclenche ensuite une des deux méthodes de jeu en fonction du fait que les instances passées en argument soient ou non des joueurs
+\par La partie est une instance de \emph{Game} qui a pour attribut les deux joueurs. C'est également elle qui détient l'état du jeu au sens large, et l'historique des coups. Elle attribue à sa création une ID temporaire qui sert à distinguer les deux instances de joueurs de manière simple dans l'instance de chaque joueur. Elle enclenche ensuite une des deux méthodes de jeu en fonction du fait que les instances passées en argument soient ou non des joueurs ou des IA, puis gère les scores.
+\par Le joueur quant à lui reçoit par le constructeur de \emph{Game()} une référence vers la partie ce qui lui permet d'accéder facilement aux différents paramètres.
+\par Cette structure doublement chaînée permet d'utiliser toute la puissance de l'accès à tous les paramètres à tout moment tout en gardant deux type de structures différents ce qui permet par exemple dans l'algorithme génétique de bénéficier d'une écriture intelligible et flexible.
 \paragraph{}
 
 
@@ -434,7 +437,7 @@ Le calcul demeure assez simple. On suppose dans la suite que l'accès aux élém
 \par On en déduit un total de $$\boxed{\mathcal{O}(N.m.f^d+N.ln(N))}$$ 
 
 \subsection{Problèmes rencontrés}
-Le principal algorithme utilisé est l'algorithme génétique. Bien que celui-ci soit en théorie efficace, la réalité et les restrictions en terme de temps d'exécution acceptables nous ont forcé à déterminer expérimentalement ses paramètres principaux : combien de joueurs ? quels conditions initiales ? faut il mettre en place de petites ou grosses mutations ?
+Le principal algorithme utilisé est l'algorithme génétique. Bien que celui-ci soit en théorie efficace, la réalité et les restrictions en terme de temps d'exécution acceptables nous ont forcé à déterminer expérimentalement ses paramètres principaux : combien de joueurs ? quelles conditions initiales ? faut-il mettre en place de petites ou grosses mutations ?
 \par Après plusieurs tests, nous avons déterminé que même en convergeant vers des IA relativement différentes, les différents paramètres faisaient évoluer les pondérations dans une même direction globale (notre heuristique est à considérer à une constante multiplicative près). Cependant, les paramètres qui se sont avérés importants ont été l'intensité de la mutation, et le nombre d'individus fixés respectivement à $mut\_range =6, n=30$ afin de concilier le meilleur de la performance en un temps raisonnable.
 \section{Exécution du programme (usage)}
 Le programme est implémenté prêt à jouer contre l'utilisateur. En effet, l'IA par défaut est déjà correctement paramétrée en ayant en mémoire l'une des pondérations les plus plus prometteuses trouvée durant notre algorithme génétique.
@@ -464,8 +467,8 @@ Le programme peut encore être amélioré.
 
 \item \textbf{Interface graphique} 
 
-L'interface graphique actuelle est très sommaire car elle n'a été développée que dans des perspectives de test et de debug. Dans cette optique, il serait possible d'implémenter une interface plus complexe qui permettrait de commander les opérations implémentées facilement et lancer des parties contre différentes IA, de difficulté croissantes.
-\par Il serait également possible de faire l'exact exemple et d'incorporer un éditeur d'IA qui permettrait de défier ses amis en développant une IA battant la leur, à la manière de LeakWars\footnote{\url{https://leekwars.com/}}.
+L'interface graphique actuelle est très sommaire car elle n'a été développée que dans des perspectives de test et de debug. Dans cette optique, il serait possible d'implémenter une interface plus complexe qui permettrait de commander les opérations facilement et lancer des parties contre différentes IA, de difficulté croissantes.
+\par Il serait également possible de faire l'exact inverse et d'incorporer un éditeur d'IA qui permettrait de défier ses amis en développant une IA battant la leur, à la manière de LeakWars\footnote{\url{https://leekwars.com/}}.
 
 \item \textbf{Intelligence artificielle} 
 
@@ -473,7 +476,7 @@ L'étape suivante dans la quête d'une IA serait d'adopter le paradigme du rése
 \par Cela nécessiterait de passer de la méthode actuelle de notation qui se fait en fonction du coup proposé, et de la situation actuelle, à une notation d'une grille seule.
 
 \item \textbf{Applications} 
-\par Le morpionception est un jeu dont l'arbre de décision est extrêmement complexe. Le résoudre pourrait se faire de manière partielle avec l’implémentation d'une IA qui gagne à tous les coups. Sa mise au point serait alors équivalent à résoudre le jeu. Il peut également être intéressant d'utiliser d'autres langages qui permettent une meilleure gestion de la mémoire comme le C++ afin d'essayer de générer l'arbre de jeu entier.
+\par Le morpionception est un jeu dont l'arbre de décision est extrêmement complexe. Le résoudre pourrait se faire de manière partielle avec l’implémentation d'une IA qui gagne à tous les coups. Sa mise au point équivaudrait alors à résoudre le jeu. Il peut également être intéressant d'utiliser d'autres langages qui permettent une meilleure gestion de la mémoire comme le C++ afin d'essayer de générer l'arbre de jeu entier.
 
 \end{enumerate}
 

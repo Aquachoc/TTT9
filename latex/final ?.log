@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.2)  21 MAY 2018 23:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.2)  21 MAY 2018 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -822,86 +822,84 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--88
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<tour1.png, id=13, 476.78125pt x 410.53375pt>
+<tour1.png, id=16, 476.78125pt x 410.53375pt>
 File: tour1.png Graphic file (type png)
 <use tour1.png>
-Package pdftex.def Info: tour1.png  used on input line 116.
+Package pdftex.def Info: tour1.png  used on input line 117.
 (pdftex.def)             Requested size: 120.85303pt x 104.06142pt.
 
-Underfull \hbox (badness 7649) in paragraph at lines 117--117
+Underfull \hbox (badness 7649) in paragraph at lines 118--118
 []\OT1/cmr/m/sc/10 Figure \OT1/cmr/m/n/10 1 { |Dans cet
  []
 
-<tour2.png, id=15, 493.845pt x 412.54124pt>
+<tour2.png, id=18, 493.845pt x 412.54124pt>
 File: tour2.png Graphic file (type png)
 <use tour2.png>
-Package pdftex.def Info: tour2.png  used on input line 120.
+Package pdftex.def Info: tour2.png  used on input line 121.
 (pdftex.def)             Requested size: 120.85303pt x 100.95073pt.
-<tour3.png, id=16, 504.88625pt x 402.50375pt>
+<tour3.png, id=19, 504.88625pt x 402.50375pt>
 File: tour3.png Graphic file (type png)
 <use tour3.png>
-Package pdftex.def Info: tour3.png  used on input line 124.
+Package pdftex.def Info: tour3.png  used on input line 125.
 (pdftex.def)             Requested size: 120.85303pt x 96.34491pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-<exemple.png, id=17, 220.825pt x 220.825pt>
+<exemple.png, id=20, 220.825pt x 220.825pt>
 File: exemple.png Graphic file (type png)
 <use exemple.png>
-Package pdftex.def Info: exemple.png  used on input line 139.
+Package pdftex.def Info: exemple.png  used on input line 140.
 (pdftex.def)             Requested size: 241.70607pt x 241.7188pt.
-[2 <./tour1.png> <./tour2.png> <./tour3.png> <./exemple.png>]
-<interface.png, id=26, 903.375pt x 936.49875pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2 <./tour1.png> <./tour2.png> <./tour3.png>]
+<interface.png, id=28, 903.375pt x 936.49875pt>
 File: interface.png Graphic file (type png)
 <use interface.png>
-Package pdftex.def Info: interface.png  used on input line 158.
+Package pdftex.def Info: interface.png  used on input line 159.
 (pdftex.def)             Requested size: 241.70607pt x 250.57167pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--167
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--173
+Underfull \hbox (badness 10000) in paragraph at lines 172--174
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+[3 <./exemple.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
 [4 <./interface.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
+Underfull \hbox (badness 10000) in paragraph at lines 221--223
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--226
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
 
  []
 
@@ -910,37 +908,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
-<minimax.png, id=34, 656.4525pt x 323.2075pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+<minimax.png, id=37, 656.4525pt x 323.2075pt>
 File: minimax.png Graphic file (type png)
 <use minimax.png>
-Package pdftex.def Info: minimax.png  used on input line 233.
+Package pdftex.def Info: minimax.png  used on input line 234.
 (pdftex.def)             Requested size: 338.38702pt x 166.60907pt.
 [5 <./minimax.png>]
-Overfull \hbox (12.03313pt too wide) in paragraph at lines 264--266
+Overfull \hbox (12.03313pt too wide) in paragraph at lines 265--267
 \OT1/cmr/m/n/10 Si notre in-tel-li-gence ar-ti-fi-cielle la plus sa-tis-fai-san
 te (celle jouant se-lon l'al-go-rithme mi-ni-max) est extr^emement
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--266
+Underfull \hbox (badness 10000) in paragraph at lines 265--267
 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 295.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 296.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 295.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 296.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [6]
+) [6] [7]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py)
@@ -948,9 +951,6 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) (./genetique.py
-[7]) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -959,15 +959,18 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 [8]) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) (./genetique.py)
 [9] [10] [11] (./final ?.aux) ) 
 Here is how much of TeX's memory you used:
  9318 strings out of 492982
  130701 string characters out of 6134897
- 420737 words of memory out of 5000000
+ 419737 words of memory out of 5000000
  12662 multiletter control sequences out of 15000+600000
  14993 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,40p,570b,2187s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,40p,569b,2191s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
@@ -983,7 +986,7 @@ ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt8.pfb>
-Output written on "final ?.pdf" (11 pages, 886287 bytes).
+Output written on "final ?.pdf" (11 pages, 888106 bytes).
 PDF statistics:
  113 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream

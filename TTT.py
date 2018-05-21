@@ -10,9 +10,6 @@ import time
 import math
 from copy import deepcopy
 MOVE=[-1,-1,-1,-1] #global buffer for the user inputed move
-FLAG=[]         #TBD
-x=0 #tbd
-y=0 #tbd
 mut_range=6 #scale for genetic mutation 
 random_range=10 #range for genetic initialisation
 
@@ -142,7 +139,7 @@ def possible(grid, last, mgrid=[]): #return list of 4moves
                 del(b[k])
                 
             elif mgrid[b[k][0]][b[k][1]]: #If a mSquare is finished remove
-                del(b[k])0
+                del(b[k])
             else:
                 k+=1
     return b #return the list
@@ -159,7 +156,7 @@ def human_move(event): #get move when clicked
     print(MOVE)
     
 class Game:
-    def __init__(self,p1,p2,IA=0):
+    def __init__(self,p1,p2):
         self.p1=p1 #ref the two players
         self.p2=p2
         self.mgrid=np.zeros((3,3),dtype=int) 
@@ -232,8 +229,6 @@ class Game:
         w.pack()
         w.bind("<Button-1>", human_move)
         w.bind("<Return>", kill_tk)
-        w.player=p #tbd
-        w.cache=[-1,-1,-1,-1] #tbd
         w.root=root #allows to call the mainloop more freely
         for i in range(1,9): #basic display structure
             if i%3:
@@ -270,6 +265,7 @@ class Game:
             else:
                 o=isWon(self.mgrid) #checks for win
                 self.winner=(-1 if o==0 else o)
+        time.sleep(4)
         w.root.destroy()        
         if self.winner==1: #scores 
             self.p1.score+=1
@@ -685,7 +681,7 @@ def training(nb, gen, nb_games):
     
 a=Player(pond = [ -0.99403255, -28.00149821,  37.97525959,  -6.9197625 ,
        -16.63066428,  -8.17460181,  -2.63418722, -29.41853052,
-        43.87076219,   4.6322527 ,   6.23818578,          math.inf], typ="mini")
+        43.87076219,   4.6322527 ,   6.23818578,          math.inf], typ="heuri")
 b=Player(IA=0)
 main=Game(a,b)
 #b=Player(pond=a.pond, typ="euri")
