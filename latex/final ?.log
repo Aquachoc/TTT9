@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.2)  21 MAY 2018 21:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.2)  21 MAY 2018 23:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**LH.tex
-(./LH.tex
+**"final ?.tex"
+(./final ?.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -459,37 +459,53 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen119
 \Gm@dimlist=\toks29
 )
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/02/14 3.18 The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
 )
-Package xcolor Info: Driver file: pdftex.def on input line 225.
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2018/02/04 v3.4b French support from the babel system
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/02/14 3.18 Babel common definitions
+\babel@savecnt=\count102
+\U@D=\dimen120
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count103
 )
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/svgnam.def
-File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
+\l@acadian = a dialect from \language\l@french 
+\FB@nonchar=\count104
+Package babel Info: Making : an active character on input line 411.
+Package babel Info: Making ; an active character on input line 412.
+Package babel Info: Making ! an active character on input line 413.
+Package babel Info: Making ? an active character on input line 414.
+\FBguill@level=\count105
+\FB@everypar=\toks30
+\FB@Mht=\dimen121
+\mc@charclass=\count106
+\mc@charfam=\count107
+\mc@charslot=\count108
+\std@mcc=\count109
+\dec@mcc=\count110
+\c@FBcaption@count=\count111
+\listindentFB=\skip49
+\descindentFB=\skip50
+\labelwidthFB=\skip51
+\leftmarginFB=\skip52
+\parindentFFN=\dimen122
+\FBfnindent=\skip53
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
-\col@sep=\dimen120
-\extrarowheight=\dimen121
-\NC@list=\toks30
-\extratabsurround=\skip49
-\backup@length=\skip50
+\col@sep=\dimen123
+\extrarowheight=\dimen124
+\NC@list=\toks31
+\extratabsurround=\skip54
+\backup@length=\skip55
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -504,9 +520,12 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
-)
-\Gin@req@height=\dimen122
-\Gin@req@width=\dimen123
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen125
+\Gin@req@width=\dimen126
 )
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
@@ -514,21 +533,41 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen124
-\captionmargin@=\dimen125
-\captionwidth=\dimen126
-\caption@tempdima=\dimen127
-\caption@indent=\dimen128
-\caption@parindent=\dimen129
-\caption@hangindent=\dimen130
+\captionmargin=\dimen127
+\captionmargin@=\dimen128
+\captionwidth=\dimen129
+\caption@tempdima=\dimen130
+\caption@indent=\dimen131
+\caption@parindent=\dimen132
+\caption@hangindent=\dimen133
 )
-\c@ContinuedFloat=\count102
+\c@ContinuedFloat=\count112
 )
 (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
-\c@subfigure=\count103
-\c@subtable=\count104
+\c@subfigure=\count113
+\c@subtable=\count114
 )
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/svgnam.def
+File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
+))
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
 Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 \symstmry=\mathgroup6
@@ -540,9 +579,9 @@ Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titling/titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip51
-\thanksmargin=\skip52
-\droptitle=\skip53
+\thanksmarkwidth=\skip56
+\thanksmargin=\skip57
+\droptitle=\skip58
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
@@ -552,16 +591,16 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count105
-\calc@Bcount=\count106
-\calc@Adimen=\dimen131
-\calc@Bdimen=\dimen132
-\calc@Askip=\skip54
-\calc@Bskip=\skip55
+\calc@Acount=\count115
+\calc@Bcount=\count116
+\calc@Adimen=\dimen134
+\calc@Bdimen=\dimen135
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count107
-\calc@Cskip=\skip56
+\calc@Ccount=\count117
+\calc@Cskip=\skip61
 )
 (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
@@ -575,41 +614,41 @@ Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-\AM@pagewidth=\dimen133
-\AM@pageheight=\dimen134
+\AM@pagewidth=\dimen136
+\AM@pageheight=\dimen137
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box28
-\AM@global@opts=\toks31
-\AM@toc@title=\toks32
-\c@AM@survey=\count108
+\AM@global@opts=\toks32
+\AM@toc@title=\toks33
+\c@AM@survey=\count118
 \AM@templatesizebox=\box29
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
-\epsfxsize=\dimen135
-\epsfysize=\dimen136
+\epsfxsize=\dimen138
+\epsfysize=\dimen139
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count109
+\lst@mode=\count119
 \lst@gtempboxa=\box30
-\lst@token=\toks33
-\lst@length=\count110
-\lst@currlwidth=\dimen137
-\lst@column=\count111
-\lst@pos=\count112
-\lst@lostspace=\dimen138
-\lst@width=\dimen139
-\lst@newlines=\count113
-\lst@lineno=\count114
-\lst@maxwidth=\dimen140
+\lst@token=\toks34
+\lst@length=\count120
+\lst@currlwidth=\dimen140
+\lst@column=\count121
+\lst@pos=\count122
+\lst@lostspace=\dimen141
+\lst@width=\dimen142
+\lst@newlines=\count123
+\lst@lineno=\count124
+\lst@maxwidth=\dimen143
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count115
-\lst@skipnumbers=\count116
+\c@lstnumber=\count125
+\lst@skipnumbers=\count126
 \lst@framebox=\box31
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -626,8 +665,8 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) (./LH.aux)
-\openout1 = `LH.aux'.
+) (./final ?.aux)
+\openout1 = `"final ?.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
@@ -641,7 +680,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -676,19 +714,27 @@ LaTeX Font Info:    ... okay on input line 59.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+LaTeX Info: Redefining \degres on input line 59.
+LaTeX Info: Redefining \dots on input line 59.
+LaTeX Info: Redefining \up on input line 59.
+
+Package french.ldf Warning: OT1 encoding should not be used for French.
+(french.ldf)                Add \usepackage[T1]{fontenc} to the preamble
+(french.ldf)                of your document; reported on input line 59.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
-\scratchdimen=\dimen141
+\scratchcounter=\count127
+\scratchdimen=\dimen144
 \scratchbox=\box32
-\nofMPsegments=\count118
-\nofMParguments=\count119
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count120
-\MPscratchDim=\dimen142
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
-\everyMPtoPDFconversion=\toks35
+\nofMPsegments=\count128
+\nofMParguments=\count129
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count130
+\MPscratchDim=\dimen145
+\MPnumerator=\count131
+\makeMPintoPDFobject=\count132
+\everyMPtoPDFconversion=\toks36
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -748,7 +794,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-\c@lstlisting=\count123
+\c@lstlisting=\count133
 LaTeX Font Info:    Try loading font information for U+msa on input line 61.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -761,125 +807,186 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+stmry on input line 61.
 
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) (./final ?.toc)
+\tf@toc=\write3
+\openout3 = `"final ?.toc"'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
-<tour1.png, id=1, 476.78125pt x 410.53375pt>
-File: tour1.png Graphic file (type png)
-<use tour1.png>
-Package pdftex.def Info: tour1.png  used on input line 108.
-(pdftex.def)             Requested size: 120.85303pt x 104.06142pt.
-<tour2.png, id=3, 493.845pt x 412.54124pt>
-File: tour2.png Graphic file (type png)
-<use tour2.png>
-Package pdftex.def Info: tour2.png  used on input line 112.
-(pdftex.def)             Requested size: 120.85303pt x 100.95073pt.
-<tour3.png, id=4, 504.88625pt x 402.50375pt>
-File: tour3.png Graphic file (type png)
-<use tour3.png>
-Package pdftex.def Info: tour3.png  used on input line 116.
-(pdftex.def)             Requested size: 120.85303pt x 96.34491pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
-<exemple.png, id=5, 220.825pt x 220.825pt>
-File: exemple.png Graphic file (type png)
-<use exemple.png>
-Package pdftex.def Info: exemple.png  used on input line 131.
-(pdftex.def)             Requested size: 241.70607pt x 241.7188pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+
+ []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./tour1.png> <./tour2.png>
- <./tour3.png>]
-Overfull \hbox (0.3386pt too wide) in paragraph at lines 140--142
- [] \OT1/cmr/m/n/10 De plus, la cr^^Seation d'une in-tel-li-gence ar-ti-fi-ciel
-le sup-pose de pou-voir ^^Sevaluer chaque coup et de d^^Seterminer
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<tour1.png, id=13, 476.78125pt x 410.53375pt>
+File: tour1.png Graphic file (type png)
+<use tour1.png>
+Package pdftex.def Info: tour1.png  used on input line 116.
+(pdftex.def)             Requested size: 120.85303pt x 104.06142pt.
+
+Underfull \hbox (badness 7649) in paragraph at lines 117--117
+[]\OT1/cmr/m/sc/10 Figure \OT1/cmr/m/n/10 1 { |Dans cet
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 147.
+<tour2.png, id=15, 493.845pt x 412.54124pt>
+File: tour2.png Graphic file (type png)
+<use tour2.png>
+Package pdftex.def Info: tour2.png  used on input line 120.
+(pdftex.def)             Requested size: 120.85303pt x 100.95073pt.
+<tour3.png, id=16, 504.88625pt x 402.50375pt>
+File: tour3.png Graphic file (type png)
+<use tour3.png>
+Package pdftex.def Info: tour3.png  used on input line 124.
+(pdftex.def)             Requested size: 120.85303pt x 96.34491pt.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 147.
- [2 <./exemple.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 200--204
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
+
+ []
+
+<exemple.png, id=17, 220.825pt x 220.825pt>
+File: exemple.png Graphic file (type png)
+<use exemple.png>
+Package pdftex.def Info: exemple.png  used on input line 139.
+(pdftex.def)             Requested size: 241.70607pt x 241.7188pt.
+[2 <./tour1.png> <./tour2.png> <./tour3.png> <./exemple.png>]
+<interface.png, id=26, 903.375pt x 936.49875pt>
+File: interface.png Graphic file (type png)
+<use interface.png>
+Package pdftex.def Info: interface.png  used on input line 158.
+(pdftex.def)             Requested size: 241.70607pt x 250.57167pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--173
 
  []
 
 [3]
-<minimax.png, id=28, 656.4525pt x 323.2075pt>
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
+
+ []
+
+[4 <./interface.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--222
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
+
+ []
+
+<minimax.png, id=34, 656.4525pt x 323.2075pt>
 File: minimax.png Graphic file (type png)
 <use minimax.png>
-Package pdftex.def Info: minimax.png  used on input line 214.
+Package pdftex.def Info: minimax.png  used on input line 233.
 (pdftex.def)             Requested size: 338.38702pt x 166.60907pt.
- [4 <./minimax.png>]
-Overfull \hbox (7.03314pt too wide) in paragraph at lines 244--247
-\OT1/cmr/m/n/10 Si notre in-tel-li-gence ar-ti-fi-cielle la plus sat-is-faisant
-e (celle jouant selon l'algorithme min-i-max) est extr^emement
+[5 <./minimax.png>]
+Overfull \hbox (12.03313pt too wide) in paragraph at lines 264--266
+\OT1/cmr/m/n/10 Si notre in-tel-li-gence ar-ti-fi-cielle la plus sa-tis-fai-san
+te (celle jouant se-lon l'al-go-rithme mi-ni-max) est extr^emement
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--266
+
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) (./genetique.py)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) (./genetique.py)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) (./genetique.py
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 295.
 
-[5]) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 295.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) [6]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) (./genetique.py)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py
-[6]) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+[7]) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) (./genetique.py)
-[7] [8] [9] (./LH.aux) ) 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) (./genetique.py
+[8]) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) (./genetique.py)
+[9] [10] [11] (./final ?.aux) ) 
 Here is how much of TeX's memory you used:
- 8068 strings out of 492982
- 112599 string characters out of 6134897
- 315617 words of memory out of 5000000
- 11441 multiletter control sequences out of 15000+600000
- 14692 words of font info for 59 fonts, out of 8000000 for 9000
+ 9318 strings out of 492982
+ 130701 string characters out of 6134897
+ 420737 words of memory out of 5000000
+ 12662 multiletter control sequences out of 15000+600000
+ 14993 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,40p,525b,2150s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on LH.pdf (9 pages, 829769 bytes).
+ 41i,8n,40p,570b,2187s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mtt8.pfb>
+Output written on "final ?.pdf" (11 pages, 886287 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

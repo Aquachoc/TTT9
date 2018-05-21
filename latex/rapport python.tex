@@ -1,6 +1,6 @@
-\documentclass[10pt]{article} 
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
-
+ 
 % 10pt permet de déterminer la taille de la fonte
 \usepackage[utf8]{inputenc}
 
@@ -10,7 +10,7 @@
 \usepackage{geometry}
 \geometry{hmargin=2.3cm,vmargin=2.5cm}
 % ce package permet de spécifier la taille des marges (h: horizontales; v: verticales)
-\usepackage[svgnames]{xcolor}
+
 \usepackage{array}
 \usepackage{graphicx,graphics}
 \usepackage{caption}
@@ -23,32 +23,12 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{epsfig}
-\usepackage{listings}
 
 \usepackage[section]{placeins}
 % packages utilisés pour faire des tableaux, graphiques et mise en page
 
 \usepackage{url}
-\lstset{language = Python,
-inputencoding=utf8,
-    extendedchars=true,
-    literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ô}{{\^o}}1 {ù}{{\`u}}1,
-    backgroundcolor=\color{WhiteSmoke},   
-    commentstyle=\color{DarkOrange},
-    keywordstyle=\color{NavyBlue},
-    numberstyle=\tiny\color{LightSlateGrey},
-    stringstyle=\color{MediumVioletRed},
-    basicstyle=\footnotesize\color{DarkSlateGrey},
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2,}
+
 
 
 
@@ -65,8 +45,8 @@ inputencoding=utf8,
 
 %\begin{itemize}
  %   \item instructions pour exécuter le programme
-
-%\item description d’un point de design de code
+  %  \item
+%description d’un point de design de code
 %\item
 %description d’un algorithme du programme et son coût
 %\item
@@ -139,9 +119,8 @@ En effet, contrairement au jeu du Tic Tac Toe classique, qui se termine par un m
 \paragraph{}
 De plus, la création d'une intelligence artificielle suppose de pouvoir évaluer chaque coup et de déterminer la valeur d'une position. Or, cela ne va pas de soi dans ce jeu, qui se joue à plusieurs niveaux: un coup doit-il être évalué à l'aune de ce qu'il apporte au joueur dans la petite grille où il est joué? \\
 Ou faut-il davantage tenir compte de la case de la grande grille où il renvoie l'adversaire? 
-\end{enumerate}
-\section{Développement}
-\subsection{Méthode suivie}
+
+\item \textbf{Méthode suivie}
 
 \begin{itemize}
     \item Nous avons tout d'abord réfléchi à une manière optimale de coder une partie, et plus particulièrement l'état de la grille à un instant donné. Nous avons décidé de répresenter  la grande grille comme un tableau $3\times3$ de tableaux $3\times3$ (les petites grilles). Chacune des 81 cases est donc référencée grâce à un quadruple indice. \\
@@ -173,8 +152,8 @@ On considère également qu'il vaut renvoyer l'adversaire dans une case où il p
 \paragraph{}
 \item Une fois cette heuristique créée, nous avons codé les règles du jeu (définition des coups possibles, enchaînement des actions, etc.), avant de créer une intelligence artificielle jouant aléatoirement selon ces règles (IA de type \textit{dummy} dans le code). 
 \paragraph{}
-\item Nous avons ensuite implementé un algorithme génétique dans le but d'améliorer nos pondérations, et de créer une intelligence artificielle jouant selon ces pondérations. \\
-La performance de ces intelligences artifcielles (de type \textit{eurist} dans le code) a été evaluée en fonction de leur taux de victoire et de défaite contre l'intelligence artificielle jouant aléatoirement. 
+\item Nous avons ensuite implémente un algorithme génétique dans le but d'améliorer nos pondérations, et de créer une intelligence artificielle jouant selon ces pondérations. \\
+La performance de ces intelligences artificielles (de type \textit{heurist} dans le code) a été évaluée en fonction de leur taux de victoire et de défaite contre l'intelligence artificielle jouant aléatoirement. 
 L'algorithme génétique se décompose en plusieurs étapes: 
 \begin{itemize}
     \item créer un lot de joueurs, jouant selon des pondérations déterminées de façon subjective dans un premier temps. 
@@ -184,7 +163,9 @@ L'algorithme génétique se décompose en plusieurs étapes:
     \item avec ce nouveau lot de joueurs (meilleure moitié et joueurs mutés), recommencer à partir de la deuxième étape.   
 \end{itemize}
 
-\item Au bout de 30 générations, nous avons obtenu les résultats suivant:
+\item Au bout de 30 générations, nous avons obtenu les résultats suivant sur 100 matchs: 
+
+On voit donc que notre intelligence artificielle générée par cet algorithme génétique présente une très nette amélioration par rapport à notre intelligence artificielle aléatoire.
 $$
 \begin{tabular}{ |c|c|c| }
 \hline
@@ -197,25 +178,23 @@ Nuls & 5 & 30 \\
  Défaites  & 4 & 35 \\
  \hline
 \end{tabular}
-$$ 
-%insérer résultats: je sais pas si tu les as gardés où s'il faut refaire tourner le programme
-\\ 
-On voit donc que notre intelligence artificielle générée par cet algorithme génétique présente une très nette amélioration par rapport à notre intelligence artificielle aléatoire. \\
+$$
 \paragraph{}
 \item Cette intelligence artificielle heuristique présente cependant une faiblesse majeure, qui est qu'elle n'a aucune profondeur dans son évaluation des coups: elle joue simplement selon des pondérations permettant d'évaluer la valeur du coup qu'elle va jouer \\
 Nous avons donc implémenté un algorithme minimax, permettant à l'IA de voir à une profondeur de 3 coups. \\
 Cet algorithme, que l'on peut représenter sous forme d'un arbre, examine toutes les évolutions possibles du jeu à partir de la configuration actuelle,et attribue à chacune de ces feuilles une valeur (selon les pondérations de la meilleure intelligence artificielle générée par l'algorithme génétique). \\
 On considère que l'adversaire (qui joue au coup d'après), va choisir le coup qui l'amène à la situation la plus bénéfique pour lui, et donc la plus néfaste pour nous. \\
-La valeur d'un noeud de l'adversaire correspond donc au minimum des feuilles évaluées précédemment. La valeur de chacun de nos coups possibles va donc être le maximum des valeurs des noeuds de l'adversaire, et on va jouer le coup possédant la plus haute valeur (il s'agit donc du coup qui nous permettra d'atteindre la situation de jeu la plus optimale pour nous dans 3 coups, en sachant que l'adversaire choisira toujours le coup qui lui est le plus avantageux).
+La valeur d'un nœud de l'adversaire correspond donc au minimum des feuilles évaluées précédemment. La valeur de chacun de nos coups possibles va donc être le maximum des valeurs des nœuds de l'adversaire, et on va jouer le coup possédant la plus haute valeur (il s'agit donc du coup qui nous permettra d'atteindre la situation de jeu la plus optimale pour nous dans 3 coups, en sachant que l'adversaire choisira toujours le coup qui lui est le plus avantageux).
 
 \paragraph{}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\textwidth]{minimax.png}
-\caption{ }{Exemple d'arbre minimax (les carrés représentent ici les noeuds joueurs et les ronds les noeuds opposants)}
+\caption{ }{Exemple d'arbre minimax (les carrés représentent ici les nœuds joueurs et les ronds les noeuds opposants)}
 \end{figure}
 
 
+Cet algorithme permet à l'intelligence artificielle de gagner en performance. \\
 Contre l'intelligence artificielle aléatoire, on a en effet observé, sur 200 matchs: 
 $$
 \begin{tabular}{ |c|c|c|c| }
@@ -232,123 +211,6 @@ Nuls & 10 & 10 & 60 \\
 $$
 
 \paragraph{}
-\item Une fois ces étapes réalisées, nous avons complété les classes \textit{Player} et\textit{Game}, permettant chacune de définir les fonctions et les propriétés d'un joueur et d'une partie. 
-
-\item In fine, notre programme permet donc: 
-\begin{itemize}
-    \item faire jouer deux intelligences artificielles (de type \textit{dummy}, \textit{eurist} ou \textit{mini}) l'une contre l'autre
-    \item de jouer soi-même contre une intelligence artificielle de l'un de ces 3 types, sur une interface graphique adaptée.
-
-\end{itemize}
-\paragraph{}
-$\Longrightarrow$ On a donc bien réussi à créer une intelligence artificielle pour le jeu du Tic Tac Toe $9\times9$, contre laquelle on peut jouer dans une interface graphique satisfaisante. \\
-Si notre intelligence artificielle la plus satisfaisante (celle jouant selon l'algorithme minimax) est extrêmement performante contre une intelligence artificielle aléatoire, et constitue donc un réel succès sur ce point, elle s'avère cependant un peu faible face à un humain. \\
-Cela est probablement dû à la difficulté d'évaluer simplement une situation de la grille à un moment donné, ainsi qu'à la difficulté qu'il y a à trouver une stratégie gagnante à ce jeu somme toute beaucoup moins simple qu'il n'y paraît. 
-
-
-\end{itemize}
-
-%\item \textbf{Instructions pour utiliser le programme}
-%Une fois le programme exécuté, pour lancer une partie contre une intelligence artificielle, il suffit de:
-%\begin{itemize}
-%    \item 
-%\end{itemize}
-
-\paragraph{}
-\subsection{Détail du code : l'algorithme générique}
-
-\begin{itemize}
-    \item L'algorithme génétique consiste à répéter plusieurs fois les opérations suivantes: 
-    \begin{itemize}
-        \item créer une génération de joueurs
-        \item les faire jouer plusieurs fois contre l'intelligence artificielle aléatoire  
-        \item garder la meilleure moitié
-        \item "muter" l'autre moitié, en modifiant aléatoirement les pondérations auxquelles ces joueurs obéissent 
-        \item recommencer avec cette nouvelle génération
-    \end{itemize}
-    Une étape de cet algorithme (soit une \textit{génération}, correspond à la fonction suivante: 
-    \lstinputlisting[language = Python, firstline = 41, lastline = 47]{genetique.py}
-Cette fonction \textit{génération} fait elle-même appel à plusieurs autres fonctions, que nous allons détailler maintenant. 
-
-\item La fonction \textit{génération} prend plusieurs arguments: 
-\begin{itemize}
-    \item n, qui correspond à la taille de l'échantillon de joueurs que nous allons considérer, et qui est ici fixé à 30
-    \item nb, qui correspond au nombre de matchs que chacun de ces joueurs va faire contre l'intelligence artificielle aléatoire, et qui est ici fixé à 100
-    \item N, qui correspond à la liste des joueurs 
-\end{itemize}
-
-\item À la première génération, N est encore vide. On crée donc un lot de joueurs, en faisant appel à la fonction \textit{create\_batch}: 
-\lstinputlisting[language = Python, firstline = 10, lastline = 14]{genetique.py}
-Cette fonction prend en argument n, la taille du lot de joueurs, et renvoie une liste contenant n éléments de la classe \textit{Player}, la classe qui définit les propriétés et les fonctions d'un joueur. 
-
- Une fois ce lot créé, on fait appel à la fonction \textit{randomize} pour générer des pondérations aléatoires: 
-\lstinputlisting[language = Python, firstline = 16, lastline = 20]{genetique.py}
-Cette fonction prend en argument une liste de joueurs et, pour chacun des joueurs de cette liste, leur attribue une tableau de pondérations générées aléatoirement. 
-
-\item L'étape précédente n'est réalisée qu'à la première génération, si N est vide. Sinon, on passe directement à l'étape suivante: le tournoi entre chacun des joueurs de N et l'intelligence artificielle aléatoire. 
-Pour cela, on fait appel à la fonction \textit{dummy\_tournament}: 
-\lstinputlisting[language = Python, firstline = 49, lastline = 67 20]{genetique.py}
-
-Cette fonction prend deux arguments: 
-\begin{itemize}
-    \item players, une liste de joueurs
-    \item n, le nombre de fois que chaque joueur va jouer contre l'intelligence artificielle, et qui est ici fixé à 60. 
-\end{itemize}
-On crée tout d'abord un joueur b, de type \textit{dummy}, et qui correspond à l'intelligence artificielle aléatoire contre laquelle nos joueurs vont jouer.\\
-On crée également j, un compteur du nombre de joueurs qui ont déjà effectué leurs matchs, afin de pouvoir suivre l'avancement du programme. \\
-Ensuite, pour chaque joueur: 
-\begin{itemize}
-    \item On augmente j de 1 et on l'affiche, pour suivre l'avancée du programme
-    \item On réalise les opérations suivantes n fois: 
-    \begin{itemize}
-        %\item je ne comprend pas bien ce que tu as fais avec l... 
-        \item si n est impair, on décide que l'intelligence artificielle aléatoir jouera en deuxième
-        \item si n est pair, elle commencera à jouer. 
-        \item on joue ensuite la partie
-        \item si le vainqueur est notre joueur étudié, on augmente son score de 1
-    \end{itemize}
-La fonction renvoie enfin le score de chaque joueur. 
-\end{itemize}
-
-
-\item Une fois ce tournoi effectué et les scores des joueurs conservés en mémoire, on fait appel à la fonction \textit{mutate} pour créer une nouvelle génération de joueurs. 
-\lstinputlisting[language = Python, firstline = 22, lastline = 32]{genetique.py}
-Cette fonction prend en argument une liste de joueurs, et la "mute" pour créer une nouvelle génération de joueurs. 
-\begin{itemize}
-    \item On commence par couper la liste de joueurs en deux, en les triant selon leurs scores. Une fois ce tri effectué, on remet les scores à zéro. \item Ensuite, pour chaque joueur de la première moitié de la liste (donc les joueurs ayant obtenu les moins bons scores), on effectue les opérations suivantes: 
-    \begin{itemize}
-        \item on attribue à p, au départ un tableau vide, le tableau des pondérations de ce joueur
-        \item on applique la fonction \textit{mutation} à ce tableau de pondérations: 
-        \lstinputlisting[language = Python, firstline = 36, lastline = 39]{genetique.py}
-        Cette fonction prend en argument un tableau de pondérations, le remplace par un tableau de même taille généré aléatoirement, et renvoie ce nouveau tableau. 
-        \item dans la liste des joueurs, on met à la place du joueur considéré un joueur dont les pondérations sont égales à la somme de ses pondérations de départ et des pondérations mutées.  
-    \end{itemize}
-On obtient alors une nouvelle liste de joueurs, dont une moitié à vu ses pondérations modifiées, et on peut appliquer à nouveau notre fonction \textit{generation} à cette liste. 
-\end{itemize}
-
-Lorsqu'on observe les scores des joueurs de chaque génération, on s'aperçoit que chaque génération est plus efficace (i.e. obtient de meilleures scores face à l'intelligence artificielle aléatoire). 
-
-\item Coût de l'algorithme génétique
-\par Bien qu'il est difficile d'estimer le coût d'une partie en elle-même, on peut calculer le coût d'une génération entière.
-On note dans la suite : 
-\begin{itemize}
-\item $N$ le nombre d'individus
-\item $m$ le nombre de matchs
-\item $f$ le nombre de facteurs pris en compte dans l'heuristique
-\item $d$ la profondeur de calcul du minimax
-\end{itemize}
-Le calcul demeure assez simple. On suppose dans la suite que l'accès aux éléments d'une liste en python est linéaire de sa taille, et qu'une partie est jouée en temps constant. Calculons les participations individuelles de chaque élément.
-\begin{itemize}
-\item La création est $\mathcal{O}(N)$.
-\item Le calcul sur une couche de l'heuristique est $\mathcal{O}(f)$ car la grille est de taille constante.
-\item Le tri de la liste se fait en $\mathcal{O}(N.ln(N))$
-\item Parcourir la liste en faisant jouer chaque joueur est $\mathcal{O}(N.m.P)$ avec $P$ le temps d'une partie.
-\item La dépendance selon $d$ est exponentielle, et dépend du nombre de facteurs à vérifier sur chaque niveau $\mathcal{O}(f^d)$
-\item Enfin la mutation se fait en temps linéaire selon $f$ et $N$
-\end{itemize}
-\par On en déduit un total de $$\boxed{\mathcal{O}(N.m.f^d+N.ln(N))}$$ 
-\end{itemize}
-
 
 \section{Exécution du programme}
 Le programme est implémenté prêt à jouer contre l'utilisateur. En effet, l'IA par défaut est déjà correctement paramétrée en ayant en mémoire l'une des plus prometteuses pondérations trouvée durant notre algorithme génétique.
@@ -383,11 +245,10 @@ L'interface graphique actuelle est très sommaire car elle n'a été développé
 L'étape suivante dans la quête d'une IA serait d'adopter le paradigme du réseau de neurone afin de remplacer l'heuristique. En effet, il serait intéressant d'entraîner un réseau de neurone qui noterait a position d'arrivée et permettrait de choisir un coup de manière à maximiser sa valeur d'arrivée.
 \par Cela nécessiterait de passer de la méthode actuelle de notation qui se fait en fonction du coup proposé, et de la situation actuelle, à une notation d'une grille seule.
 
-\subsection{Perspectives}
-\par Le morpionception est un jeu dont l'arbre de décision est extrêmement complexe. Le résoudre pourrait se faire de manière partielle avec l’implémentation d'une IA qui gagne à tous les coups. Sa mise au point serait alors équivalent à résoudre le jeu. Il peut également être intéressant d'utiliser d'autres langages qui permettent une meilleure gestion de la mémoire comme le C++ afin d'essayer de générer l'arbre de jeu entier.
+\subsection{Applications}
+Il est extrêmement difficile de résoudre entièrement le morpionception. Le nombre de grilles est bien trop élevé sans avoir recours à des techniques de mémoïsation, un stockage particulier, et une RAM très importante afin de générer l'arbre de jeu. Cependant, en appliquant des techniques de deep learning en mettant en place une IA assez efficace, prouver que cette IA gagne toujours serait la démonstration d'une stratégie - bien qu'éventuellement peu régulière - gagnante.
+\par Il est également possible de transformer le tout en jeu.
 
-
-
-
-
+\end{itemize}
+\end{enumerate}
 \end{document}
